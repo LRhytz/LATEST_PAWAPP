@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Base theme colors -->
+    <color name="primary">#4CAF50</color>
+    <color name="primary_dark">#388E3C</color>
+    <color name="primary_light">#C8E6C9</color>
+    <color name="accent">#FF9800</color>
+
+    <!-- Text colors -->
+    <color name="primary_text">#212121</color>
+    <color name="secondary_text">#757575</color>
+    <color name="accent_text">#FF9800</color>
+    <color name="white_text">#FFFFFF</color>
+
+    <!-- User type theme colors -->
+    <color name="citizen_theme">#4CAF50</color>
+    <color name="organization_theme">#2196F3</color>
+
+    <!-- Background colors -->
+    <color name="landing_background">#F8F9FA</color>
+    <color name="login_background">#F8F9FA</color>
+    <color name="card_background">#FFFFFF</color>
+    <color name="icon_background">#E8F5E9</color>
+
+    <!-- Utility colors -->
+    <color name="stroke_color">#E0E0E0</color>
+    <color name="divider_color">#BDBDBD</color>
+    <color name="icon_tint">#757575</color>
+    <color name="error">#F44336</color>
+    <color name="success">#4CAF50</color>
+    <color name="warning">#FFC107</color>
+    <color name="info">#2196F3</color>
+
+    <!-- Status colors for reports -->
+    <color name="status_new">#2196F3</color>
+    <color name="status_in_progress">#FF9800</color>
+    <color name="status_resolved">#4CAF50</color>
+    <color name="status_urgent">#F44336</color>
+
+    <!-- 🔷 Primary brand colors -->
+    <color name="colorPrimary">#1E88E5</color>
+    <color name="colorPrimaryDark">#1565C0</color>
+    <color name="colorPrimaryLight">#64B5F6</color>
+    <color name="colorPrimaryContainer">#E3F2FD</color>
+    <color name="colorOnPrimaryContainer">#0D47A1</color>
+
+    <!-- 🔷 Secondary brand colors -->
+    <color name="colorSecondary">#26A69A</color>
+    <color name="colorSecondaryDark">#00897B</color>
+    <color name="colorSecondaryLight">#4DB6AC</color>
+    <color name="colorSecondaryContainer">#E0F2F1</color>
+    <color name="colorOnSecondaryContainer">#004D40</color>
+
+    <!-- 🔺 Alert / Status colors -->
+    <color name="colorError">#D32F2F</color>
+    <color name="colorErrorDark">#B71C1C</color>
+    <color name="colorErrorContainer">#FFEBEE</color>
+    <color name="colorOnErrorContainer">#B71C1C</color>
+
+    <color name="colorWarning">#FFA000</color>
+    <color name="colorWarningContainer">#FFF8E1</color>
+    <color name="colorOnWarningContainer">#E65100</color>
+
+    <color name="colorSuccess">#388E3C</color>
+    <color name="colorSuccessContainer">#E8F5E9</color>
+    <color name="colorOnSuccessContainer">#1B5E20</color>
+
+    <!-- 📝 Neutral / Typography / Surface -->
+    <color name="text_primary">#212121</color>
+    <color name="text_secondary">#757575</color>
+    <color name="text_tertiary">#9E9E9E</color>
+    <color name="text_disabled">#BDBDBD</color>
+
+    <color name="background">#FFFFFF</color>
+    <color name="surface">#FFFFFF</color>
+    <color name="surface_variant">#F5F5F5</color>
+    <color name="outline">#E0E0E0</color>
+
+    <!-- 💬 Interactive states -->
+    <color name="ripple_color">#1F000000</color>
+    <color name="highlight">#1A1E88E5</color>
+    <color name="divider">#EEEEEE</color>
+
+    <!-- 🧷 Chip backgrounds -->
+    <color name="chip_background">#E0F7FA</color>
+    <color name="chip_stray">#E1F5FE</color>
+    <color name="chip_injured">#FBE9E7</color>
+    <color name="chip_lost">#FFF3E0</color>
+    <color name="chip_adopt">#E8F5E9</color>
+
+    <!-- 🌈 System base colors -->
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="transparent">#00000000</color>
+
+</resources>

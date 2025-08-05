@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/home_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <!-- Welcome Message Card -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/welcome_card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="4dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp">
+
+            <!-- Welcome text -->
+            <TextView
+                android:id="@+id/tv_welcome"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Welcome to PAW App 🐾"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <!-- Report Incident button -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_report_incident"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Report Incident"
+                android:textAllCaps="false"
+                android:layout_marginTop="12dp"
+                app:icon="@drawable/urgent"
+                app:iconGravity="start"
+                app:cornerRadius="24dp"
+                app:layout_constraintTop_toBottomOf="@id/tv_welcome"
+                app:layout_constraintStart_toStartOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- Recent Reports Section -->
+    <TextView
+        android:id="@+id/tv_recent_incidents"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Recent Reports"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_marginTop="24dp"
+        app:layout_constraintTop_toBottomOf="@id/welcome_card"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/incidents_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintTop_toBottomOf="@id/tv_recent_incidents"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:listitem="@layout/item_incident" />
+
+    <!-- Empty State -->
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/empty_state_group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:constraint_referenced_ids="empty_image,empty_text" />
+
+    <ImageView
+        android:id="@+id/empty_image"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:src="@drawable/empty_state"
+        app:layout_constraintTop_toTopOf="@id/incidents_recycler_view"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintVertical_bias="0.3" />
+
+    <TextView
+        android:id="@+id/empty_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="No incidents reported yet"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@id/empty_image"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

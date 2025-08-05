@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginVertical="4dp"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="2dp"
+    app:strokeWidth="1dp"
+    app:strokeColor="@color/stroke_color">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="12dp">
+
+        <!-- Status indicator -->
+        <View
+            android:id="@+id/status_indicator"
+            android:layout_width="8dp"
+            android:layout_height="0dp"
+            android:background="@drawable/status_indicator_background"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <!-- Incident thumbnail image -->
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/incident_image"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="12dp"
+            android:scaleType="centerCrop"
+            app:shapeAppearanceOverlay="@style/ShapeAppearance.App.CornerRadius8"
+            app:layout_constraintStart_toEndOf="@id/status_indicator"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:src="@tools:sample/avatars" />
+
+        <!-- Incident information -->
+        <TextView
+            android:id="@+id/incident_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="8dp"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:maxLines="1"
+            android:ellipsize="end"
+            app:layout_constraintStart_toEndOf="@id/incident_image"
+            app:layout_constraintEnd_toStartOf="@id/incident_timestamp"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Stray Dog Found" />
+
+        <!-- Incident type -->
+        <com.google.android.material.chip.Chip
+            android:id="@+id/incident_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="4dp"
+            android:textSize="12sp"
+            app:chipMinHeight="24dp"
+            app:chipCornerRadius="12dp"
+            app:chipBackgroundColor="@color/chip_background"
+            app:layout_constraintStart_toEndOf="@id/incident_image"
+            app:layout_constraintTop_toBottomOf="@id/incident_title"
+            tools:text="Stray Animal" />
+
+        <!-- Incident location -->
+        <TextView
+            android:id="@+id/incident_location"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="8dp"
+            android:textSize="14sp"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:drawableStart="@drawable/location"
+            android:drawablePadding="4dp"
+            app:layout_constraintStart_toEndOf="@id/incident_image"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/incident_type"
+            tools:text="Downtown, Main Street" />
+
+        <!-- Incident timestamp -->
+        <TextView
+            android:id="@+id/incident_timestamp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:textColor="@color/text_secondary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="2h ago" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>

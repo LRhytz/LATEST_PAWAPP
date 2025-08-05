@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_citizen"
+    app:startDestination="@id/citizenHomeFragment">
+
+    <fragment
+        android:id="@+id/citizenHomeFragment"
+        android:name="com.ucb.pawapp.citizen.ui.dashboard.CitizenHomeFragment"
+        android:label="Home"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_home_to_details"
+            app:destination="@id/incidentDetailsFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/adoptFragment"
+        android:name="com.ucb.pawapp.citizen.ui.dashboard.AdoptFragment"
+        android:label="Adopt"
+        tools:layout="@layout/fragment_adopt">
+        <action
+            android:id="@+id/action_adopt_to_pet_details"
+            app:destination="@id/petDetailsFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/articlesFragment"
+        android:name="com.ucb.pawapp.citizen.ui.dashboard.ArticlesFragment"
+        android:label="Articles"
+        tools:layout="@layout/fragment_articles">
+        <action
+            android:id="@+id/action_articles_to_article_detail"
+            app:destination="@id/articleDetailFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/donateFragment"
+        android:name="com.ucb.pawapp.citizen.ui.dashboard.DonateFragment"
+        android:label="Donate"
+        tools:layout="@layout/fragment_donate" />
+
+    <!-- renamed to profileFragment to match menu ID -->
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.ucb.pawapp.citizen.ui.dashboard.ProfileFragment"
+        android:label="Profile"
+        tools:layout="@layout/fragment_profile" />
+
+    <!-- Detail screens -->
+    <fragment
+        android:id="@+id/incidentDetailsFragment"
+        android:name="com.ucb.pawapp.citizen.ui.dashboard.IncidentDetailsFragment"
+        android:label="Incident Details"
+        tools:layout="@layout/fragment_incident_details">
+        <argument
+            android:name="incidentId"
+            app:argType="string" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/petDetailsFragment"
+        android:name="com.ucb.pawapp.citizen.ui.dashboard.PetDetailsFragment"
+        android:label="Pet Details"
+        tools:layout="@layout/fragment_pet_details">
+        <argument
+            android:name="petId"
+            app:argType="string" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/articleDetailFragment"
+        android:name="com.ucb.pawapp.citizen.ui.dashboard.ArticleDetailFragment"
+        android:label="Article"
+        tools:layout="@layout/fragment_article_detail">
+        <argument
+            android:name="articleId"
+            app:argType="string" />
+    </fragment>
+
+</navigation>

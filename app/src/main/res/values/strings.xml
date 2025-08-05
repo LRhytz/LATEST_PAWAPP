@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">PAW APP</string>
+    <string name="welcome_title">Welcome to PAW APP</string>
+    <string name="welcome_subtitle">Report animal incidents and promote animal welfare</string>
+    <string name="citizen_login">Continue as Citizen</string>
+    <string name="organization_login">Continue as Organization</string>
+    <string name="login">Log In</string>
+    <string name="signup">Sign Up</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="or">OR</string>
+    <string name="google_login">Continue with Google</string>
+    <string name="facebook_login">Continue with Facebook</string>
+    <string name="name">Full Name</string>
+    <string name="phone">Phone Number</string>
+    <string name="organization_name">Organization Name</string>
+    <string name="organization_id">Organization ID</string>
+    <string name="organization_description">Organization Description</string>
+    <string name="already_have_account">Already have an account?</string>
+    <string name="dont_have_account">Don\'t have an account?</string>
+    <string name="back">Back</string>
+    <string name="terms_conditions">By continuing, you agree to our Terms and Conditions</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="profile_photo"></string>
+</resources>

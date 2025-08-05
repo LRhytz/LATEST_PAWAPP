@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".citizen.ui.dashboard.CitizenDashboardActivity">
+
+    <!-- Fragment Container -->
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/nav_host_fragment_citizen"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="80dp"
+        app:defaultNavHost="true"
+        app:navGraph="@navigation/nav_citizen" />
+
+    <!-- FAB for Quick Report -->
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/fab_report"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center"
+        android:layout_marginBottom="96dp"
+        android:text="Report"
+        android:textAllCaps="false"
+        app:icon="@drawable/urgent"
+        app:iconGravity="start"
+        app:iconTint="@color/white"
+        app:backgroundTint="@color/colorPrimary" />
+
+    <!-- Bottom Navigation -->
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_nav"
+        style="@style/Widget.Material3.BottomNavigationView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        app:elevation="8dp"
+        app:itemRippleColor="@color/ripple_color"
+        app:itemActiveIndicatorStyle="@style/App.BottomNavigation.ActiveIndicator"
+        app:labelVisibilityMode="labeled"
+        app:menu="@menu/menu_bottom_citizen" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

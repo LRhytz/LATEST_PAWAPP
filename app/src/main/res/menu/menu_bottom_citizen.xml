@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/citizenHomeFragment"
+        android:icon="@drawable/home"
+        android:title="Home"
+        android:contentDescription="Navigate to home screen" />
+
+    <item
+        android:id="@+id/adoptFragment"
+        android:icon="@drawable/pets"
+        android:title="Adopt"
+        android:contentDescription="Navigate to pet adoption screen" />
+
+    <item
+        android:id="@+id/articlesFragment"
+        android:icon="@drawable/articles"
+        android:title="Articles"
+        android:contentDescription="Navigate to articles screen" />
+
+    <item
+        android:id="@+id/donateFragment"
+        android:icon="@drawable/donate"
+        android:title="Donate"
+        android:contentDescription="Navigate to donations screen" />
+
+    <!-- renamed to profileFragment -->
+    <item
+        android:id="@+id/profileFragment"
+        android:icon="@drawable/avatar_placeholder"
+        android:title="Profile"
+        android:contentDescription="Navigate to your profile" />
+
+</menu>

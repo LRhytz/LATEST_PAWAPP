@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="160dp"
+    android:height="60dp"
+    android:viewportWidth="160"
+    android:viewportHeight="60">
+    <!-- First paw print -->
+    <path
+        android:fillColor="@color/primary"
+        android:pathData="M20,20m-5,0a5,5 0,1 1,10 0a5,5 0,1 1,-10 0" />
+    <path
+        android:fillColor="@color/primary"
+        android:pathData="M35,15m-5,0a5,5 0,1 1,10 0a5,5 0,1 1,-10 0" />
+    <path
+        android:fillColor="@color/primary"
+        android:pathData="M35,25m-5,0a5,5 0,1 1,10 0a5,5 0,1 1,-10 0" />
+    <path
+        android:fillColor="@color/primary"
+        android:pathData="M50,20m-5,0a5,5 0,1 1,10 0a5,5 0,1 1,-10 0" />
+    <path
+        android:fillColor="@color/primary"
+        android:pathData="M35,35m-10,0a10,10 0,1 1,20 0a10,10 0,1 1,-20 0" />
+
+    <!-- Second paw print -->
+    <path
+        android:fillColor="@color/primary"
+        android:pathData="M80,30m-5,0a5,5 0,1 1,10 0a5,5 0,1 1,-10 0" />
+    <path
+        android:fillColor="@color/primary"
+        android:pathData="M95,25m-5,0a5,5 0,1 1,10 0a5,5 0,1 1,-10 0" />
+    <path
+        android:fillColor="@color/primary"
+        android:pathData="M95,35m-5,0a5,5 0,1 1,10 0a5,5 0,1 1,-10 0" />
+    <path
+        android:fillColor="@color/primary"
+        android:pathData="M110,30m-5,0a5,5 0,1 1,10 0a5,5 0,1 1,-10 0" />
+    <path
+        android:fillColor="@color/primary"
+        android:pathData="M95,45m-10,0a10,10 0,1 1,20 0a10,10 0,1 1,-20 0" />
+
+    <!-- Third paw print -->
+    <path
+        android:fillColor="@color/primary"
+        android:pathData="M140,15m-5,0a5,5 0,1 1,10 0a5,5 0,1 1,-10 0" />
+    <path
+        android:fillColor="@color/primary"
+        android:pathData="M155,10m-5,0a5,5 0,1 1,10 0a5,5 0,1 1,-10 0" />
+    <path
+        android:fillColor="@color/primary"
+        android:pathData="M155,20m-5,0a5,5 0,1 1,10 0a5,5 0,1 1,-10 0" />
+    <path
+        android:fillColor="@color/primary"
+        android:pathData="M170,15m-5,0a5,5 0,1 1,10 0a5,5 0,1 1,-10 0" />
+    <path
+        android:fillColor="@color/primary"
+        android:pathData="M155,30m-10,0a10,10 0,1 1,20 0a10,10 0,1 1,-20 0" />
+</vector>
