@@ -1,33 +1,27 @@
 package com.ucb.pawapp.citizen.viewmodel
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import androidx.lifecycle.*
 import com.ucb.pawapp.citizen.model.CitizenPreferences
 import com.ucb.pawapp.citizen.repository.CitizenPreferenceRepository
+import kotlinx.coroutines.launch
 
 class CitizenPreferenceViewModel : ViewModel() {
-
-    private val repository = CitizenPreferenceRepository()
+    private val repo = CitizenPreferenceRepository()
 
     private val _preferences = MutableLiveData<CitizenPreferences>()
-    val preferences: LiveData<CitizenPreferences> get() = _preferences
+    val preferences: LiveData<CitizenPreferences> = _preferences
 
     private val _saveSuccess = MutableLiveData<Boolean>()
-    val saveSuccess: LiveData<Boolean> get() = _saveSuccess
+    val saveSuccess: LiveData<Boolean> = _saveSuccess
 
-    fun savePreferences(prefs: CitizenPreferences) {
-        repository.savePreferences(
-            prefs,
-            onSuccess = { _saveSuccess.value = true },
-            onFailure = { _saveSuccess.value = false }
-        )
+    fun loadPreferences() = viewModelScope.launch {
+        runCatching { repo.loadPreferences() }
+            .onSuccess { _preferences.value = it }
     }
 
-    fun loadPreferences() {
-        repository.loadPreferences(
-            onSuccess = { prefs -> prefs?.let { _preferences.value = it } },
-            onFailure = { /* log or handle */ }
-        )
+    fun savePreferences(prefs: CitizenPreferences) = viewModelScope.launch {
+        runCatching { repo.saveExplicitPreferences(prefs.preferredSpecies, prefs.receiveNotifications) }
+            .onSuccess { _saveSuccess.value = true }
+            .onFailure { _saveSuccess.value = false }
     }
 }

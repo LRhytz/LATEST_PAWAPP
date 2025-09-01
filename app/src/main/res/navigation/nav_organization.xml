@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_organization"
+    app:startDestination="@id/organizationHomeFragment">
+
+    <fragment
+        android:id="@+id/organizationHomeFragment"
+        android:name="com.ucb.pawapp.organization.ui.dashboard.OrganizationHomeFragment"
+        android:label="Home"
+        tools:layout="@layout/fragment_organization_home" />
+
+    <!-- Adopt list -->
+    <fragment
+        android:id="@+id/organizationAdoptFragment"
+        android:name="com.ucb.pawapp.organization.ui.dashboard.OrganizationAdoptFragment"
+        android:label="Adopt"
+        tools:layout="@layout/fragment_organization_adopt">
+        <action
+            android:id="@+id/action_organizationAdoptFragment_to_organizationPostListingFragment"
+            app:destination="@id/organizationPostListingFragment"/>
+    </fragment>
+
+    <!-- Post form (opened from FAB) -->
+    <fragment
+        android:id="@+id/organizationPostListingFragment"
+        android:name="com.ucb.pawapp.organization.ui.dashboard.OrganizationPostListingFragment"
+        android:label="Post"
+        tools:layout="@layout/fragment_organization_post_listing" />
+
+    <fragment
+        android:id="@+id/organizationArticlesFragment"
+        android:name="com.ucb.pawapp.organization.ui.dashboard.OrganizationArticlesFragment"
+        android:label="Articles"
+        tools:layout="@layout/fragment_organization_articles" />
+
+    <fragment
+        android:id="@+id/organizationDonateFragment"
+        android:name="com.ucb.pawapp.organization.ui.dashboard.OrganizationDonateFragment"
+        android:label="Donate"
+        tools:layout="@layout/fragment_organization_donate" />
+
+    <fragment
+        android:id="@+id/organizationProfileFragment"
+        android:name="com.ucb.pawapp.organization.ui.dashboard.OrganizationProfileFragment"
+        android:label="Profile"
+        tools:layout="@layout/fragment_organization_profile" />
+</navigation>

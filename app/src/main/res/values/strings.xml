@@ -26,4 +26,18 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="profile_photo"></string>
+    <string name="org_my_listings_title">My Adoption Listings</string>
+    <string name="org_add_listing">Add listing</string>
+
+    <string name="org_post_listing_title">Post Adoption Listing</string>
+    <string name="org_species">Species</string>
+    <string name="org_name">Name</string>
+    <string name="org_name_hint">e.g., Milo</string>
+    <string name="org_size">Size</string>
+    <string name="org_breed_opt">Breed (optional)</string>
+    <string name="org_breed_hint">e.g., Shih Tzu</string>
+    <string name="org_photo_opt">Photo URL (optional)</string>
+    <string name="org_photo_hint">https://…</string>
+    <string name="org_btn_post">Post Listing</string>
+    <string name="org_delete">Delete</string>
 </resources>

@@ -1,6 +1,7 @@
 // File: app/src/main/java/com/ucb/pawapp/citizen/ui/dashboard/ProfileFragment.kt
 package com.ucb.pawapp.citizen.ui.dashboard
 
+import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,6 +12,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import coil.load
 import coil.transform.CircleCropTransformation
+import com.google.firebase.auth.FirebaseAuth
+import com.ucb.pawapp.LandingActivity
 import com.ucb.pawapp.R
 import com.ucb.pawapp.databinding.FragmentProfileBinding
 
@@ -19,13 +22,12 @@ class ProfileFragment : Fragment() {
     private var _binding: FragmentProfileBinding? = null
     private val binding get() = _binding!!
 
-    // Share the same dashboard VM instance (Hilt‑provided)
+    // Share the same dashboard VM instance (Hilt-provided)
     private val vm: CitizenDashboardViewModel by viewModels({ requireActivity() })
 
     // Launcher to pick a new profile image
     private val pickImageLauncher = registerForActivityResult(GetContent()) { uri: Uri? ->
         uri?.let {
-            // TODO: implement upload in your ViewModel
             vm.uploadNewProfilePhoto(it)
         }
     }
@@ -74,12 +76,24 @@ class ProfileFragment : Fragment() {
             binding.tvCompletionPercent.text = "$percent% Complete"
         }
 
-        // 3️⃣ Quick‑action buttons
+        // 3️⃣ Quick-action buttons
         binding.btnSettings.setOnClickListener {
             // TODO: launch your Settings screen
         }
         binding.btnHelp.setOnClickListener {
             // TODO: launch Help & FAQ
+        }
+
+        // 4️⃣ Logout button
+        binding.btnLogout.setOnClickListener {
+            // Sign out from Firebase
+            FirebaseAuth.getInstance().signOut()
+
+            // Redirect to LandingActivity, clearing backstack
+            val intent = Intent(requireContext(), LandingActivity::class.java).apply {
+                flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            }
+            startActivity(intent)
         }
     }
 

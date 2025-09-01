@@ -7,35 +7,37 @@ import com.ucb.pawapp.organization.model.OrganizationSignupData
 import com.ucb.pawapp.organization.repository.OrganizationAuthRepository
 
 class OrganizationSignupViewModel : ViewModel() {
-
-    private val repository = OrganizationAuthRepository()
+    private val repo = OrganizationAuthRepository()
 
     private val _signupSuccess = MutableLiveData<Boolean>()
-    val signupSuccess: LiveData<Boolean> get() = _signupSuccess
+    val signupSuccess: LiveData<Boolean> = _signupSuccess
 
     private val _signupError = MutableLiveData<String?>()
-    val signupError: LiveData<String?> get() = _signupError
+    val signupError: LiveData<String?> = _signupError
 
-    fun registerOrganization(data: OrganizationSignupData, password: String, confirmPassword: String) {
-        if (data.email.isBlank() || password.isBlank() || data.organizationName.isBlank()) {
+    fun registerOrganization(
+        data: OrganizationSignupData,
+        password: String,
+        confirmPassword: String
+    ) {
+        // basic validation
+        if (data.email.isBlank() ||
+            data.organizationName.isBlank() ||
+            password.isBlank() ||
+            confirmPassword.isBlank()
+        ) {
             _signupError.value = "Please fill in all required fields"
             return
         }
-
         if (password != confirmPassword) {
             _signupError.value = "Passwords do not match"
             return
         }
 
-        repository.signupOrganization(
-            data,
-            password,
-            onSuccess = {
-                _signupSuccess.value = true
-            },
-            onFailure = {
-                _signupError.value = it.message
-            }
+        repo.signupOrganization(
+            data, password,
+            onSuccess = { _signupSuccess.value = true },
+            onFailure = { _signupError.value = it.message }
         )
     }
 }

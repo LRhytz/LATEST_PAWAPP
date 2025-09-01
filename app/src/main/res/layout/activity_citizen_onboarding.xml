@@ -1,0 +1,384 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F8F9FA">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:padding="24dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!-- Header Section -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/rounded_background"
+            android:padding="20dp"
+            android:layout_marginBottom="24dp"
+            android:elevation="2dp">
+
+            <TextView
+                android:text="🐾 Tell us your interests"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:textColor="#2E3440"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:text="Help us personalize your pet experience"
+                android:textSize="14sp"
+                android:textColor="#6C757D"
+                android:layout_marginTop="4dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+        <!-- Pet Species Section -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/section_background"
+            android:padding="16dp"
+            android:layout_marginBottom="16dp"
+            android:elevation="1dp">
+
+            <TextView
+                android:text="🐕 🐱 Pet Species"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="#2E3440"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:text="Which pets are you interested in?"
+                android:textSize="12sp"
+                android:textColor="#6C757D"
+                android:layout_marginBottom="12dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <CheckBox
+                android:id="@+id/cbDog"
+                android:text="🐕 Dogs"
+                android:textSize="16sp"
+                android:textColor="#495057"
+                android:padding="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?android:attr/selectableItemBackground"/>
+
+            <CheckBox
+                android:id="@+id/cbCat"
+                android:text="🐱 Cats"
+                android:textSize="16sp"
+                android:textColor="#495057"
+                android:padding="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?android:attr/selectableItemBackground"/>
+
+            <CheckBox
+                android:id="@+id/cbBoth"
+                android:text="❤️ Both Dogs and Cats"
+                android:textSize="16sp"
+                android:textColor="#495057"
+                android:padding="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?android:attr/selectableItemBackground"/>
+        </LinearLayout>
+
+        <!-- Pet Sizes Section -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/section_background"
+            android:padding="16dp"
+            android:layout_marginBottom="16dp"
+            android:elevation="1dp">
+
+            <TextView
+                android:text="📏 Preferred Pet Sizes"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="#2E3440"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:text="What size pets do you prefer?"
+                android:textSize="12sp"
+                android:textColor="#6C757D"
+                android:layout_marginBottom="12dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <CheckBox
+                android:id="@+id/cbSmall"
+                android:text="🐕‍🦺 Small (under 25 lbs)"
+                android:textSize="16sp"
+                android:textColor="#495057"
+                android:padding="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?android:attr/selectableItemBackground"/>
+
+            <CheckBox
+                android:id="@+id/cbMedium"
+                android:text="🐕 Medium (25-60 lbs)"
+                android:textSize="16sp"
+                android:textColor="#495057"
+                android:padding="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?android:attr/selectableItemBackground"/>
+
+            <CheckBox
+                android:id="@+id/cbLarge"
+                android:text="🐕‍🦮 Large (over 60 lbs)"
+                android:textSize="16sp"
+                android:textColor="#495057"
+                android:padding="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?android:attr/selectableItemBackground"/>
+        </LinearLayout>
+
+        <!-- Age Preferences Section -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/section_background"
+            android:padding="16dp"
+            android:layout_marginBottom="16dp"
+            android:elevation="1dp">
+
+            <TextView
+                android:text="🎂 Age Preferences"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="#2E3440"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:text="What age range interests you most?"
+                android:textSize="12sp"
+                android:textColor="#6C757D"
+                android:layout_marginBottom="12dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <CheckBox
+                android:id="@+id/cbPuppy"
+                android:text="🐶 Puppies/Kittens (0-1 year)"
+                android:textSize="16sp"
+                android:textColor="#495057"
+                android:padding="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?android:attr/selectableItemBackground"/>
+
+            <CheckBox
+                android:id="@+id/cbYoung"
+                android:text="🐕 Young Adults (1-3 years)"
+                android:textSize="16sp"
+                android:textColor="#495057"
+                android:padding="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?android:attr/selectableItemBackground"/>
+
+            <CheckBox
+                android:id="@+id/cbAdult"
+                android:text="🐕‍🦺 Adults (3-7 years)"
+                android:textSize="16sp"
+                android:textColor="#495057"
+                android:padding="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?android:attr/selectableItemBackground"/>
+
+            <CheckBox
+                android:id="@+id/cbSenior"
+                android:text="🐕‍🦮 Seniors (7+ years)"
+                android:textSize="16sp"
+                android:textColor="#495057"
+                android:padding="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?android:attr/selectableItemBackground"/>
+        </LinearLayout>
+
+        <!-- Pet Care Topics Section -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/section_background"
+            android:padding="16dp"
+            android:layout_marginBottom="24dp"
+            android:elevation="1dp">
+
+            <TextView
+                android:text="📚 Pet Care Topics"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="#2E3440"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:text="Which topics would you like to learn about? (optional)"
+                android:textSize="12sp"
+                android:textColor="#6C757D"
+                android:layout_marginBottom="12dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <!-- Dog Topics -->
+            <TextView
+                android:text="🐕 Dog Topics"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="#495057"
+                android:layout_marginTop="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <CheckBox
+                android:id="@+id/cbDogTraining"
+                android:text="🎾 Dog Training and Behavior"
+                android:textSize="15sp"
+                android:textColor="#495057"
+                android:padding="6dp"
+                android:layout_marginLeft="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?android:attr/selectableItemBackground"/>
+
+            <CheckBox
+                android:id="@+id/cbDogHealth"
+                android:text="🏥 Dog Health and Wellness"
+                android:textSize="15sp"
+                android:textColor="#495057"
+                android:padding="6dp"
+                android:layout_marginLeft="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?android:attr/selectableItemBackground"/>
+
+            <CheckBox
+                android:id="@+id/cbDogNutrition"
+                android:text="🍖 Dog Nutrition and Diet"
+                android:textSize="15sp"
+                android:textColor="#495057"
+                android:padding="6dp"
+                android:layout_marginLeft="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?android:attr/selectableItemBackground"/>
+
+            <CheckBox
+                android:id="@+id/cbDogGrooming"
+                android:text="✂️ Dog Grooming and Care"
+                android:textSize="15sp"
+                android:textColor="#495057"
+                android:padding="6dp"
+                android:layout_marginLeft="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?android:attr/selectableItemBackground"/>
+
+            <!-- Cat Topics -->
+            <TextView
+                android:text="🐱 Cat Topics"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="#495057"
+                android:layout_marginTop="16dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <CheckBox
+                android:id="@+id/cbCatHealth"
+                android:text="🏥 Cat Health and Wellness"
+                android:textSize="15sp"
+                android:textColor="#495057"
+                android:padding="6dp"
+                android:layout_marginLeft="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?android:attr/selectableItemBackground"/>
+
+            <CheckBox
+                android:id="@+id/cbCatBehavior"
+                android:text="🧸 Cat Behavior and Play"
+                android:textSize="15sp"
+                android:textColor="#495057"
+                android:padding="6dp"
+                android:layout_marginLeft="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?android:attr/selectableItemBackground"/>
+
+            <CheckBox
+                android:id="@+id/cbCatNutrition"
+                android:text="🐟 Cat Nutrition and Diet"
+                android:textSize="15sp"
+                android:textColor="#495057"
+                android:padding="6dp"
+                android:layout_marginLeft="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?android:attr/selectableItemBackground"/>
+
+            <CheckBox
+                android:id="@+id/cbCatLitter"
+                android:text="🪣 Litter Box and Hygiene"
+                android:textSize="15sp"
+                android:textColor="#495057"
+                android:padding="6dp"
+                android:layout_marginLeft="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?android:attr/selectableItemBackground"/>
+        </LinearLayout>
+
+        <!-- Continue Button -->
+        <Button
+            android:id="@+id/btnContinue"
+            android:text="Continue to Next Step"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            android:background="@drawable/button_primary"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_marginBottom="16dp"
+            android:elevation="3dp"/>
+
+        <!-- Skip Button -->
+        <TextView
+            android:id="@+id/tvSkip"
+            android:text="Skip for now"
+            android:textSize="14sp"
+            android:textColor="#6C757D"
+            android:gravity="center"
+            android:padding="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true"/>
+
+    </LinearLayout>
+</ScrollView>

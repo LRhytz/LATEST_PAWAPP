@@ -1,26 +1,95 @@
 {
   "project_info": {
-    "project_number": "924317259910",
-    "project_id": "pawapp-faa78",
-    "storage_bucket": "pawapp-faa78.firebasestorage.app"
+    "project_number": "635093605118",
+    "firebase_url": "https://pawappproject-default-rtdb.firebaseio.com",
+    "project_id": "pawappproject",
+    "storage_bucket": "pawappproject.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:924317259910:android:86a5931c6d0783ff8b5907",
+        "mobilesdk_app_id": "1:635093605118:android:9650ac4e010c93600da3af",
         "android_client_info": {
-          "package_name": "com.ucb.pawapp"
+          "package_name": "com.example.pawappproject"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "635093605118-b4943ca83gas84c9gps0j9e0hp1k9g35.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
-          "current_key": "AIzaSyCw8e1nPM_a3njQUBUnUV2U0_oPSJ0a35k"
+          "current_key": "AIzaSyAUKZAPFZ44aeBUGxi-2w2ejpBF8j0cve8"
         }
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "635093605118-b4943ca83gas84c9gps0j9e0hp1k9g35.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:635093605118:android:3e0e09c2ce6325560da3af",
+        "android_client_info": {
+          "package_name": "com.ucb.pawapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "635093605118-b4943ca83gas84c9gps0j9e0hp1k9g35.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAUKZAPFZ44aeBUGxi-2w2ejpBF8j0cve8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "635093605118-b4943ca83gas84c9gps0j9e0hp1k9g35.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:635093605118:android:95d3e78d88e8740f0da3af",
+        "android_client_info": {
+          "package_name": "com.ucb.pawapp_organization"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "635093605118-b4943ca83gas84c9gps0j9e0hp1k9g35.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAUKZAPFZ44aeBUGxi-2w2ejpBF8j0cve8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "635093605118-b4943ca83gas84c9gps0j9e0hp1k9g35.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }
