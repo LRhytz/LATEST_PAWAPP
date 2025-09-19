@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<navigation
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_citizen"
@@ -16,9 +15,10 @@
             app:destination="@id/incidentDetailsFragment" />
     </fragment>
 
+    <!-- ✅ FIXED package here -->
     <fragment
         android:id="@+id/adoptFragment"
-        android:name="com.ucb.pawapp.citizen.ui.dashboard.AdoptFragment"
+        android:name="com.ucb.pawapp.citizen.ui.adopt.AdoptFragment"
         android:label="Adopt"
         tools:layout="@layout/fragment_adopt">
         <action
@@ -42,14 +42,12 @@
         android:label="Donate"
         tools:layout="@layout/fragment_donate" />
 
-    <!-- renamed to profileFragment to match menu ID -->
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.ucb.pawapp.citizen.ui.dashboard.ProfileFragment"
         android:label="Profile"
         tools:layout="@layout/fragment_profile" />
 
-    <!-- Detail screens -->
     <fragment
         android:id="@+id/incidentDetailsFragment"
         android:name="com.ucb.pawapp.citizen.ui.dashboard.IncidentDetailsFragment"

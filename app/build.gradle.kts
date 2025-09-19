@@ -70,6 +70,7 @@ dependencies {
 
     // 3) Extended icons (for filter/search/dropdowns)
     implementation("androidx.compose.material:material-icons-extended:1.5.0")
+    implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
 
     // 5) Debug‑only tooling support (Compose previews, etc)
     debugImplementation("androidx.compose.ui:ui-tooling:1.5.0")

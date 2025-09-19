@@ -1,3 +1,4 @@
+// File: app/src/main/java/com/ucb/pawapp/citizen/viewmodel/CitizenAdoptionViewModel.kt
 package com.ucb.pawapp.citizen.viewmodel
 
 import androidx.lifecycle.ViewModel
@@ -46,8 +47,8 @@ class CitizenAdoptionViewModel : ViewModel() {
             .filter { filterSpecies.isEmpty() || it.species in filterSpecies }
             .map { p ->
                 val personal =
-                    (tagW["species_${p.species}"] ?: 0.0) +
-                            (tagW["size_${p.size}"] ?: 0.0) +
+                    (tagW["species_${p.species.lowercase()}"] ?: 0.0) +
+                            (tagW["size_${p.size.lowercase()}"] ?: 0.0) +
                             (p.breed?.let { tagW["breed_${it.lowercase()}"] } ?: 0.0)
 
                 val ageDays = max(0.0, (now - p.createdAt) / 86_400_000.0)
@@ -55,7 +56,7 @@ class CitizenAdoptionViewModel : ViewModel() {
                 val org = orgW[p.orgId] ?: 0.0
                 val explore = Random.nextDouble(0.0, 1.0)
 
-                val score = 0.45*personal + 0.25*recency + 0.20*org + 0.10*explore
+                val score = 0.45 * personal + 0.25 * recency + 0.20 * org + 0.10 * explore
                 p to score
             }
             .sortedByDescending { it.second }
@@ -64,14 +65,14 @@ class CitizenAdoptionViewModel : ViewModel() {
 
     fun favorite(pet: AdoptionListing) = viewModelScope.launch {
         val tags = buildMap<String, Double> {
-            put("species_${pet.species}", 0.35)
-            put("size_${pet.size}", 0.35)
+            put("species_${pet.species.lowercase()}", 0.35)
+            put("size_${pet.size.lowercase()}", 0.35)
             pet.breed?.let { put("breed_${it.lowercase()}", 0.35) }
         }
         val orgs = mapOf(pet.orgId to 0.2)
         prefRepo.applyWeightDeltas(tags, orgs)
 
-        // local bump
+        // local bump for immediate UI feedback
         prefs = prefs.copy(
             adoptionWeights = prefs.adoptionWeights.toMutableMap().apply {
                 tags.forEach { (k, v) -> this[k] = ((this[k] ?: 0.0) + v).coerceIn(-1.0, 3.0) }

@@ -31,6 +31,15 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths" />
         </provider> <!-- Activities -->
+
+        <activity
+            android:name=".citizen.ui.adopt.PetDetailsActivity"
+            android:exported="false"
+            android:theme="@style/Theme.Material3.DayNight.NoActionBar" />
+
+        <activity
+            android:name=".organization.ui.dashboard.OrganizationEditListingActivity"
+            android:exported="false" />
         <activity
             android:name=".organization.ui.dashboard.OrganizationHomeFragment"
             android:exported="false"

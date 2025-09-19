@@ -1,4 +1,3 @@
-// File: app/src/main/java/com/ucb/pawapp/organization/repository/OrganizationAdoptionRepository.kt
 package com.ucb.pawapp.organization.repository
 
 import com.google.firebase.auth.FirebaseAuth
@@ -18,37 +17,32 @@ class OrganizationAdoptionRepository {
     suspend fun postListing(input: AdoptionListing): String {
         val id = db.child("adoptions").push().key ?: error("Failed to create key")
 
-        // Required + common fields
         val data = mutableMapOf<String, Any?>(
-            "id" to id,
-            "orgId" to uid,
-            "species" to input.species.lowercase(),
-            "breed" to input.breed?.lowercase(),
-            "size" to input.size.lowercase(),
-            "name" to input.name,
-            "photoUrl" to input.photoUrl,
+            "id"        to id,
+            "orgId"     to uid,
+            "species"   to input.species.lowercase(),
+            "breed"     to input.breed?.lowercase(),
+            "size"      to input.size.lowercase(),
+            "name"      to input.name,
+            "photoUrl"  to input.photoUrl,
             "createdAt" to ServerValue.TIMESTAMP
         )
 
-        // Optional extras: only include if non-null
         fun putIf(k: String, v: Any?) { if (v != null) data[k] = v }
-        putIf("gender", input.gender?.lowercase())
-        putIf("ageMonths", input.ageMonths)
-        putIf("weightLbs", input.weightLbs)
-
+        putIf("gender",         input.gender?.lowercase())
+        putIf("ageMonths",      input.ageMonths)
+        putIf("weightLbs",      input.weightLbs)
         putIf("spayedNeutered", input.spayedNeutered)
-        putIf("vaccinated", input.vaccinated)
-        putIf("microchipped", input.microchipped)
-
-        putIf("goodWithKids", input.goodWithKids)
-        putIf("goodWithDogs", input.goodWithDogs)
-        putIf("goodWithCats", input.goodWithCats)
-        putIf("houseTrained", input.houseTrained)
-
-        putIf("medicalNotes", input.medicalNotes)
-        putIf("description", input.description)
-        putIf("contactInfo", input.contactInfo)
-        putIf("location", input.location)
+        putIf("vaccinated",     input.vaccinated)
+        putIf("microchipped",   input.microchipped)
+        putIf("goodWithKids",   input.goodWithKids)
+        putIf("goodWithDogs",   input.goodWithDogs)
+        putIf("goodWithCats",   input.goodWithCats)
+        putIf("houseTrained",   input.houseTrained)
+        putIf("medicalNotes",   input.medicalNotes)
+        putIf("description",    input.description)
+        putIf("contactInfo",    input.contactInfo)
+        putIf("location",       input.location)
 
         val updates = hashMapOf<String, Any?>(
             "/adoptions/$id" to data,
@@ -82,5 +76,56 @@ class OrganizationAdoptionRepository {
             updates["/adoptionsBySpecies/${species.lowercase()}/$id"] = null
         }
         db.updateChildren(updates).await()
+    }
+
+    /** Update an existing listing. Keeps createdAt/orgId, and fixes species index if changed. */
+    suspend fun updateListing(updated: AdoptionListing) {
+        require(updated.id.isNotBlank()) { "Missing id" }
+
+        val ref = db.child("adoptions").child(updated.id)
+        val snap = ref.get().await()
+        if (!snap.exists()) error("Listing not found")
+
+        val ownerId = snap.child("orgId").getValue(String::class.java)
+        if (ownerId != uid) error("Not owner")
+
+        val oldSpecies = snap.child("species").getValue(String::class.java)?.lowercase() ?: ""
+        val newSpecies = updated.species.lowercase()
+
+        val f = hashMapOf<String, Any?>(
+            "/adoptions/${updated.id}/species"         to newSpecies,
+            "/adoptions/${updated.id}/size"            to updated.size.lowercase(),
+            "/adoptions/${updated.id}/name"            to updated.name,
+            "/adoptions/${updated.id}/breed"           to updated.breed?.lowercase(),
+            "/adoptions/${updated.id}/gender"          to updated.gender?.lowercase(),
+            "/adoptions/${updated.id}/ageMonths"       to updated.ageMonths,
+            "/adoptions/${updated.id}/weightLbs"       to updated.weightLbs,
+            "/adoptions/${updated.id}/spayedNeutered"  to updated.spayedNeutered,
+            "/adoptions/${updated.id}/vaccinated"      to updated.vaccinated,
+            "/adoptions/${updated.id}/microchipped"    to updated.microchipped,
+            "/adoptions/${updated.id}/goodWithKids"    to updated.goodWithKids,
+            "/adoptions/${updated.id}/goodWithDogs"    to updated.goodWithDogs,
+            "/adoptions/${updated.id}/goodWithCats"    to updated.goodWithCats,
+            "/adoptions/${updated.id}/houseTrained"    to updated.houseTrained,
+            "/adoptions/${updated.id}/medicalNotes"    to updated.medicalNotes,
+            "/adoptions/${updated.id}/description"     to updated.description,
+            "/adoptions/${updated.id}/contactInfo"     to updated.contactInfo,
+            "/adoptions/${updated.id}/location"        to updated.location
+        )
+
+        // Only update photo if you passed a non-null value.
+        if (updated.photoUrl != null) {
+            f["/adoptions/${updated.id}/photoUrl"] = updated.photoUrl
+        }
+
+        // Fix species index if changed
+        if (oldSpecies != newSpecies) {
+            if (oldSpecies.isNotBlank()) {
+                f["/adoptionsBySpecies/$oldSpecies/${updated.id}"] = null
+            }
+            f["/adoptionsBySpecies/$newSpecies/${updated.id}"] = true
+        }
+
+        db.updateChildren(f).await()
     }
 }

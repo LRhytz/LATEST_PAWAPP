@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Card dimensions -->
+    <dimen name="card_margin">8dp</dimen>
+    <dimen name="card_corner_radius">16dp</dimen>
+    <dimen name="card_elevation">2dp</dimen>
+
+    <!-- Pet card specific dimensions -->
+    <dimen name="pet_image_height">180dp</dimen>
+    <dimen name="content_padding">16dp</dimen>
+    <dimen name="pet_name_text_size">16sp</dimen>
+    <dimen name="pet_meta_text_size">14sp</dimen>
+
+    <!-- Spacing -->
+    <dimen name="text_spacing_small">4dp</dimen>
+    <dimen name="text_spacing_medium">8dp</dimen>
+    <dimen name="gradient_overlay_height">32dp</dimen>
+    <dimen name="icon_size_small">20dp</dimen>
+</resources>

@@ -1,14 +1,16 @@
+// File: app/src/main/java/com/ucb/pawapp/citizen/ui/report/ReportIncidentActivity.kt
 package com.ucb.pawapp.citizen.ui.report
 
-import android.app.Activity
-import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.provider.MediaStore
 import android.widget.*
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.storage.FirebaseStorage
 import com.ucb.pawapp.R
+import com.ucb.pawapp.citizen.model.Incident
 
 class ReportIncidentActivity : AppCompatActivity() {
 
@@ -21,12 +23,13 @@ class ReportIncidentActivity : AppCompatActivity() {
 
     private var selectedImageUri: Uri? = null
 
-    private val imagePicker = registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
-        if (uri != null) {
-            selectedImageUri = uri
-            imagePreview.setImageURI(uri)
+    private val imagePicker =
+        registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
+            if (uri != null) {
+                selectedImageUri = uri
+                imagePreview.setImageURI(uri)
+            }
         }
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,13 +42,8 @@ class ReportIncidentActivity : AppCompatActivity() {
         btnUploadImage = findViewById(R.id.btn_upload_image)
         btnSubmit = findViewById(R.id.btn_submit)
 
-        btnUploadImage.setOnClickListener {
-            imagePicker.launch("image/*")
-        }
-
-        btnSubmit.setOnClickListener {
-            submitReport()
-        }
+        btnUploadImage.setOnClickListener { imagePicker.launch("image/*") }
+        btnSubmit.setOnClickListener { submitReport() }
     }
 
     private fun submitReport() {
@@ -58,9 +56,58 @@ class ReportIncidentActivity : AppCompatActivity() {
             return
         }
 
-        // TODO: Upload to Firebase (Firestore + Storage)
-        Toast.makeText(this, "Report submitted successfully!", Toast.LENGTH_LONG).show()
+        val uid = FirebaseAuth.getInstance().currentUser?.uid
+        if (uid == null) {
+            Toast.makeText(this, "Not signed in", Toast.LENGTH_SHORT).show()
+            return
+        }
 
-        finish()
+        val db = FirebaseDatabase.getInstance()
+        val ref = db.getReference("incidents").child(uid)
+        val id = ref.push().key ?: System.currentTimeMillis().toString()
+        val now = System.currentTimeMillis()
+
+        fun saveIncident(imageUrl: String?) {
+            val incident = Incident(
+                id = id,
+                title = title,
+                description = description,
+                type = "Stray Animal",       // You can replace with a selector in the UI
+                status = "NEW",
+                location = location,
+                latitude = 0.0,              // plug in real coords if you capture them
+                longitude = 0.0,
+                timestamp = now,
+                reportedBy = uid,
+                contactPhone = null,
+                contactEmail = null,
+                imageUrl = imageUrl,
+                animalType = null,
+                breed = null
+            )
+            ref.child(id).setValue(incident)
+                .addOnSuccessListener {
+                    Toast.makeText(this, "Report submitted successfully!", Toast.LENGTH_LONG).show()
+                    finish()
+                }
+                .addOnFailureListener {
+                    Toast.makeText(this, "Failed: ${it.localizedMessage}", Toast.LENGTH_LONG).show()
+                }
+        }
+
+        val img = selectedImageUri
+        if (img != null) {
+            val storage = FirebaseStorage.getInstance()
+            val sref = storage.getReference("incidents/$uid/$id.jpg")
+            sref.putFile(img)
+                .continueWithTask { sref.downloadUrl }
+                .addOnSuccessListener { saveIncident(it.toString()) }
+                .addOnFailureListener {
+                    Toast.makeText(this, "Image upload failed: ${it.localizedMessage}", Toast.LENGTH_SHORT).show()
+                    saveIncident(null) // still save the incident even if image fails
+                }
+        } else {
+            saveIncident(null)
+        }
     }
 }

@@ -40,4 +40,28 @@
     <string name="org_photo_hint">https://…</string>
     <string name="org_btn_post">Post Listing</string>
     <string name="org_delete">Delete</string>
+
+    <string name="item_pet_tag">ITEM_PET_NEW</string>
+    <string name="pet_photo_description">Pet photo</string>
+    <string name="add_to_favorites">Favorite Pet</string>
+    <string name="location">Organizaiton Location</string>
+    <string name="good_with_cats">Good with cats</string>
+    <string name="good_with_dogs">Good with dogs</string>
+    <string name="good_with_kids">Good with kids</string>
+
+    <!-- Health Status Strings -->
+    <string name="spayed_neutered">Spayed/Neutered</string>
+    <string name="vaccinated">Vaccinated</string>
+    <string name="microchipped">Microchipped</string>
+    <string name="house_trained">House Trained</string>
+
+    <!-- res/values/strings.xml -->
+    <string name="empty_pets_list">No pets available right now.</string>
+    <string name="adopt_btn_skip">Skip</string>
+    <string name="adopt_btn_like">Like</string>
+    <string name="no_pets_available">No pets available right now.</string>
+
+    <string name="listed_on_fmt">Listed on: %1$s</string>
+
+
 </resources>

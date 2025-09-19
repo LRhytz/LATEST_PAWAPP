@@ -12,6 +12,7 @@
         android:layout_height="match_parent">
 
         <LinearLayout
+            android:id="@+id/contentRoot"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
@@ -29,13 +30,11 @@
                     android:contentDescription="@string/app_name"
                     android:src="@drawable/gray_rect" />
 
-                <!-- Gradient overlay for better text readability -->
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="80dp"
                     android:layout_gravity="bottom"
                     android:background="@drawable/gradient_overlay" />
-
             </FrameLayout>
 
             <!-- Content Card -->
@@ -54,7 +53,6 @@
                     android:orientation="vertical"
                     android:padding="20dp">
 
-                    <!-- Pet Name and Species Row -->
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -77,7 +75,6 @@
                                 android:fontFamily="sans-serif-medium"
                                 tools:text="Buddy" />
 
-                            <!-- Age • Gender -->
                             <TextView
                                 android:id="@+id/tvAgeGender"
                                 android:layout_width="wrap_content"
@@ -87,10 +84,8 @@
                                 android:textColor="#666666"
                                 android:fontFamily="sans-serif"
                                 tools:text="2 years • Male" />
-
                         </LinearLayout>
 
-                        <!-- Species chip -->
                         <TextView
                             android:id="@+id/tvSpeciesChip"
                             android:layout_width="wrap_content"
@@ -104,10 +99,8 @@
                             android:fontFamily="sans-serif-medium"
                             android:elevation="2dp"
                             tools:text="DOG" />
-
                     </LinearLayout>
 
-                    <!-- Breed • Size -->
                     <TextView
                         android:id="@+id/tvBreedSize"
                         android:layout_width="wrap_content"
@@ -118,7 +111,6 @@
                         android:fontFamily="sans-serif"
                         tools:text="Golden Retriever • Medium" />
 
-                    <!-- Badges row with improved styling -->
                     <HorizontalScrollView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -130,7 +122,6 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal" />
-
                     </HorizontalScrollView>
 
                 </LinearLayout>
@@ -144,7 +135,7 @@
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginTop="16dp">
 
-                <!-- About Section -->
+                <!-- About -->
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -181,7 +172,6 @@
                                 android:textSize="18sp"
                                 android:textColor="#2E7D32"
                                 android:fontFamily="sans-serif-medium" />
-
                         </LinearLayout>
 
                         <TextView
@@ -192,12 +182,11 @@
                             android:textColor="#444444"
                             android:lineSpacingExtra="2dp"
                             android:fontFamily="sans-serif"
-                            tools:text="Friendly and playful. Loves short walks and cuddles. This adorable pet is looking for a loving family to call home." />
-
+                            tools:text="Friendly and playful…" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
-                <!-- Medical Section -->
+                <!-- Medical -->
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -234,7 +223,6 @@
                                 android:textSize="18sp"
                                 android:textColor="#2E7D32"
                                 android:fontFamily="sans-serif-medium" />
-
                         </LinearLayout>
 
                         <TextView
@@ -245,12 +233,11 @@
                             android:textColor="#444444"
                             android:lineSpacingExtra="2dp"
                             android:fontFamily="sans-serif"
-                            tools:text="Up-to-date vaccines. Microchipped. Regular health checkups completed." />
-
+                            tools:text="Up-to-date vaccines…" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
-                <!-- Contact & Location Section -->
+                <!-- Contact & Location -->
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -287,7 +274,6 @@
                                 android:textSize="18sp"
                                 android:textColor="#2E7D32"
                                 android:fontFamily="sans-serif-medium" />
-
                         </LinearLayout>
 
                         <TextView
@@ -325,17 +311,14 @@
                                 android:textStyle="italic"
                                 android:fontFamily="sans-serif"
                                 tools:text="2 hours ago" />
-
                         </LinearLayout>
-
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
-
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
 
-    <!-- Enhanced progress indicator -->
+    <!-- Center progress card (already in your layout) -->
     <androidx.cardview.widget.CardView
         android:id="@+id/progressCard"
         android:layout_width="wrap_content"
@@ -368,8 +351,16 @@
                 android:textColor="#666666"
                 android:layout_marginTop="12dp"
                 android:fontFamily="sans-serif" />
-
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
+    <!-- NEW: Floating Edit Button -->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabEdit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="16dp"
+        app:srcCompat="@android:drawable/ic_menu_edit"
+        app:tint="@android:color/black" />
 </FrameLayout>

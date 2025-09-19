@@ -25,6 +25,7 @@ class OrganizationAdoptFragment : Fragment() {
     private val binding get() = _binding!!
 
     private val vm: OrganizationMyListingsViewModel by viewModels()
+
     private val adapter = ListingsAdapter(
         onDelete = { id ->
             vm.delete(id) { ok ->
@@ -49,17 +50,15 @@ class OrganizationAdoptFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Recycler
         binding.rvListings.layoutManager = LinearLayoutManager(requireContext())
+        binding.rvListings.setHasFixedSize(true)
         binding.rvListings.adapter = adapter
 
-        // FAB -> to post fragment
         binding.fabAdd.setOnClickListener {
             findNavController()
                 .navigate(R.id.action_organizationAdoptFragment_to_organizationPostListingFragment)
         }
 
-        // Observe data
         vm.items.observe(viewLifecycleOwner) { list ->
             adapter.submit(list)
             binding.emptyState.visibility = if (list.isEmpty()) View.VISIBLE else View.GONE
@@ -69,9 +68,14 @@ class OrganizationAdoptFragment : Fragment() {
         }
     }
 
-    override fun onResume() {
-        super.onResume()
-        vm.refresh()
+    override fun onStart() {
+        super.onStart()
+        vm.startListening()
+    }
+
+    override fun onStop() {
+        vm.stopListening()
+        super.onStop()
     }
 
     override fun onDestroyView() {
@@ -111,7 +115,7 @@ private class ListingsAdapter(
     ) : androidx.recyclerview.widget.RecyclerView.ViewHolder(binding.root) {
 
         fun bind(item: AdoptionListing) {
-            /* ---- Image (HTTPS) with Glide, placeholder if missing) ---- */
+            // Image (HTTPS) with placeholder
             val url = item.photoUrl
             if (!url.isNullOrBlank() && (url.startsWith("http://") || url.startsWith("https://"))) {
                 Glide.with(binding.ivPetPhoto)
@@ -124,9 +128,8 @@ private class ListingsAdapter(
                 binding.ivPetPhoto.setImageResource(R.drawable.gray_rect)
             }
 
-            /* ---- Text fields ---- */
+            // Text fields
             binding.tvPetName.text = item.name.ifBlank { "Unnamed" }
-
             binding.tvSpecies.text = item.species.ifBlank { "—" }.uppercase()
 
             binding.tvAge.text = item.ageMonths?.let { m ->
@@ -154,33 +157,45 @@ private class ListingsAdapter(
                     DateUtils.getRelativeTimeSpanString(item.createdAt).toString()
                 else ""
 
-            // Simple static status for now
             binding.tvStatus.text = "ACTIVE"
             binding.llQuickStats.visibility = View.GONE
 
-            /* ---- Row click -> PetDetailsActivity ---- */
+            // Row click -> details (pass id + fallback object)
             binding.root.setOnClickListener {
+                val ctx = binding.root.context
                 if (item.id.isNotEmpty()) {
-                    val ctx = binding.root.context
                     ctx.startActivity(
                         Intent(ctx, OrganizationPetDetailsActivity::class.java)
-                            .putExtra("listingId", item.id)
+                            .putExtra(OrganizationPetDetailsActivity.EXTRA_LISTING_ID, item.id)
+                            .putExtra(OrganizationPetDetailsActivity.EXTRA_LISTING_FALLBACK, item) // OK here
                     )
+                } else {
+                    Toast.makeText(ctx, "Missing listing id", Toast.LENGTH_SHORT).show()
                 }
             }
 
-            /* ---- More (⋮) menu ---- */
+            // ⋮ menu -> Edit/Delete
             binding.btnMoreOptions.setOnClickListener { v ->
                 PopupMenu(v.context, v).apply {
                     menu.add(0, 1, 0, "Edit")
                     menu.add(0, 2, 1, "Delete")
                     setOnMenuItemClickListener {
                         when (it.itemId) {
-                            2 -> { if (item.id.isNotEmpty()) onDelete(item.id); true }
-                            else -> {
-                                Toast.makeText(v.context, "Edit not implemented", Toast.LENGTH_SHORT).show()
+                            1 -> {
+                                val ctx = v.context
+                                if (item.id.isNotEmpty()) {
+                                    // IMPORTANT: only pass the ID to the Edit screen
+                                    ctx.startActivity(
+                                        Intent(ctx, OrganizationEditListingActivity::class.java)
+                                            .putExtra(OrganizationEditListingActivity.EXTRA_LISTING_ID, item.id)
+                                    )
+                                } else {
+                                    Toast.makeText(ctx, "Missing listing id", Toast.LENGTH_SHORT).show()
+                                }
                                 true
                             }
+                            2 -> { if (item.id.isNotEmpty()) onDelete(item.id); true }
+                            else -> false
                         }
                     }
                 }.show()
